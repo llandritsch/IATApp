@@ -69,7 +69,7 @@ session_start();
         $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
         $addResult = $dbc->query($insertQuery)
                 or die(mysqli_error($dbc));
-        header("login.php");
+        header("location:login.php");
     }
 
 ?>
@@ -104,31 +104,31 @@ session_start();
         <div id="form-container">
             <div > 
                 <h2>Fill out the following information to create your account.</h2>
-                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+                <form name="createAccount" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" onsubmit="return validateForm();">
 
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input class="form-control" type="text" id="firstName" name="firstName" value="<?php echo $firstName; ?>"/>
+                        <input class="form-control" type="text" id="firstName" name="firstName" value="<?php echo $firstName; ?>" required/>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input class="form-control" type="text" id="lastName" name="lastName" value="<?php echo $lastName; ?>"/>
+                        <input class="form-control" type="text" id="lastName" name="lastName" value="<?php echo $lastName; ?>" required/>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>"/>
+                        <input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>" required/>
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input class="form-control" type="text" id="username" name="username" value="<?php echo $username; ?>"/>
+                        <input class="form-control" type="text" id="username" name="username" value="<?php echo $username; ?>" required/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" type="password" id="password" name="password" />
+                        <input class="form-control" type="password" id="password" name="password" required/>
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword">Retype Password</label>
-                        <input class="form-control" type="password" id="confirmPassord" name="confirmPassword" />
+                        <input class="form-control" type="password" id="confirmPassord" name="confirmPassword" required/>
                     </div>
 
                     <input type="submit" class="btn btn-dark" value="Submit" />
@@ -136,5 +136,6 @@ session_start();
                 </form>
             </div>
         </div>
+        <script src="validation.js"></script>
     </body>
 </html>
