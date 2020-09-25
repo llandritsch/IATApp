@@ -23,14 +23,12 @@
                 $_SESSION['id'] = $ID;
                 header('Location: myAccount.php');
             } else {
-                echo 'Incorrect password';
+                header('Location: login.php?pwIncorrect=1');
             }
         } else {
-            echo 'Incorrect username'; 
+            header('Location: login.php?userIncorrect=1');
         }
 
         $stmt->close();
-    }
-
-    
+    }  
 ?>
