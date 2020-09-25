@@ -12,6 +12,8 @@ session_start();
     $firstName = "";
     $lastName = "";
     $email = "";
+    $userNameTaken = false;
+    $passwordsDontMatch = false;
 
     // Process form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,14 +32,14 @@ session_start();
             $userNameQuery = "SELECT ID FROM userInfo WHERE username = '$username'";
             $result = $dbc->query($userNameQuery)
                     or die(mysqli_error($dbc));
-            if (mysqli_num_rows($result) == 1) {
-                echo "That username is already taken";
+            if (mysqli_num_rows($result) !== 0) {
+                $userNameTaken = true;
             } else {
                 //validate confirm password
                 if (empty($confirmPassword)) {
                     echo "Please confirm your password.";
                 } else if ($confirmPassword != $password) {
-                    echo "Passwords do not match. Please try again.";
+                    $passwordsDontMatch = true;
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
                     $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
@@ -100,6 +102,9 @@ session_start();
                         <label for="username">Username</label>
                         <input class="form-control" type="text" id="username" name="username" value="<?php echo $username; ?>" required/>
                     </div>
+                        <?php if ($userNameTaken) {?>
+                        <p class="usernameError">Username is already taken</p>
+                        <?php } ?>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input class="form-control" type="password" id="password" name="password" required/>
@@ -108,6 +113,9 @@ session_start();
                         <label for="confirmPassword">Retype Password</label>
                         <input class="form-control" type="password" id="confirmPassord" name="confirmPassword" required/>
                     </div>
+                        <?php if ($passwordsDontMatch) {?>
+                        <p class="usernameError">Passwords do not match</p>
+                        <?php } ?>
 
                     <input type="submit" class="btn btn-dark" value="Submit" />
                     <input type="reset" class="btn btn-dark" value="Clear" />

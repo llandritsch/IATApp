@@ -58,8 +58,12 @@ main {
     margin-top: 2em;
     margin-bottom: 2em;
     border-radius: 2em;
-    padding: 3em;
-    
+    padding: 3em;  
+}
+
+.usernameError {
+    color: red;
+    font-weight: bold;
 }
 
 /*segmentsPage styles*/
