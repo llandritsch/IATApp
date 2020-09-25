@@ -16,6 +16,8 @@ session_start();
     // Process form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+        $firstName = trim($_POST['firstName']);
+        $lastName = trim($_POST['lastName']);
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         $confirmPassword = trim($_POST['confirmPassword']);
@@ -30,46 +32,22 @@ session_start();
                     or die(mysqli_error($dbc));
             if (mysqli_num_rows($result) == 1) {
                 echo "That username is already taken";
-            } 
+            } else {
+                //validate confirm password
+                if (empty($confirmPassword)) {
+                    echo "Please confirm your password.";
+                } else if ($confirmPassword != $password) {
+                    echo "Passwords do not match. Please try again.";
+                } else {
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
+                    $addResult = $dbc->query($insertQuery)
+                            or die(mysqli_error($dbc));
+                    header("location:login.php");
+                }
+            }
         } 
 
-        //validate password
-        if (empty($password)) {
-            echo "Please enter a password.";
-        } 
-
-        //validate confirm password
-        if (empty($confirmPassword)) {
-            echo "Please confirm your password.";
-        } else if ($confirmPassword != $password) {
-            echo "Passwords do not match. Please try again.";
-        } else {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-        }
-
-        // validate first name
-        if (empty(trim($_POST["firstName"]))) {
-            echo "Please enter your name.";
-        } else {
-            $firstName = trim($_POST["firstName"]);
-        }
-
-        // validate last name
-        if (empty(trim($_POST["lastName"]))) {
-            echo "Please enter your last name.";
-        } else {
-            $lastName = trim($_POST["lastName"]);
-        }
-
-        //validate email
-        if (empty($email)) {
-            echo "Please enter your email.";
-        }       
-
-        $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
-        $addResult = $dbc->query($insertQuery)
-                or die(mysqli_error($dbc));
-        header("location:login.php");
     }
 
 ?>
