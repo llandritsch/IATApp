@@ -1,5 +1,8 @@
 <?php
     session_start();
+    require_once("config.php");
+
+    $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
 
 
 
@@ -38,23 +41,29 @@
                     <a class="nav-link" href="trailInfo.html">Trail Information</a>
                 </li>
             </ul>
+
+            <?php if ($_SESSION['loggedin']) { ?>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="myAccount.php">My Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
+            </ul>
+            <?php } else { ?>
+            
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="login.php">Login</a>
                 </li>
             </ul>
-            
+            <?php } ?>
         </nav>
     </div>
     <main>
         <div class="form-container">
             <h2>My Account</h2>
-<?php
-    include("config.php");
 
-    echo $_SESSION['name'];
-    $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
-?>
         </div>
     </main>
 </body>
