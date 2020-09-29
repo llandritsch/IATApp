@@ -22,14 +22,14 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
             <h1 class="display-4">Account Information</h1>
-            <p class="lead">Segment information and personal data collection</p>
+            <p class="loggedInAs">Logged in as: <?php echo "$_SESSION[name]"?></p>
             </div>
         </div>
         
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="segments.php">Segment Information</a>
