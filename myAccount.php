@@ -35,7 +35,7 @@
                     <a class="nav-link" href="segments.php">Segment Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mySegments.html">My Segments</a>
+                    <a class="nav-link" href="mySegments.php">My Segments</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="trailInfo.html">Trail Information</a>
