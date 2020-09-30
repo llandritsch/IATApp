@@ -61,9 +61,23 @@
         </nav>
     </div>
     <main>
-        <div class="form-container">
+        <div class="mainContainer">
             <h2>My Account</h2>
-
+                <table class="table">
+                <?php 
+                    $result = $dbc->query($sql)
+                            or die(mysqli_error($dbc));
+                    $row = mysqli_fetch_array($result);
+                    $username = $row['UserName'];
+                    $firstName = $row['FirstName'];
+                    $lastName = $row['LastName'];
+                    $email = $row['Email'];
+                ?>
+                    <tr scope="row"><td>UserName</td><td><?php echo $username?></td></tr>
+                    <tr scope="row"><td>Name</td><td><?php echo $firstName . " " . $lastName?></td></tr>
+                    <tr scope="row"><td>Email</td><td><?php echo $email?></td></tr>
+                </table>
+                <small class="btn btn-dark accountButton"><a href="editAccount.php">Edit Account Information</a></small>
         </div>
     </main>
 </body>
