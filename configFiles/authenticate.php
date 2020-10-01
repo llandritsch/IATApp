@@ -21,7 +21,7 @@
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['name'] = $_POST['username'];
                 $_SESSION['id'] = $ID;
-                header('Location: myAccount.php');
+                header('Location: ../myAccount.php');
             } else {
                 header('Location: login.php?pwIncorrect=1');
             }

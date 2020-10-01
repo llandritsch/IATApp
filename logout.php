@@ -37,23 +37,12 @@
                         <a class="nav-link" href="trailInfo.html">Trail Information</a>
                     </li>
                 </ul>
-    
-                <?php if (isset($_SESSION['loggedin'])) { ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="myAccount.php">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                </ul>
-                <?php } else { ?>
                 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="login.php">Login</a>
                     </li>
                 </ul>
-                <?php } ?>
             </nav>
 
         <main>

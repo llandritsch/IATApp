@@ -2,9 +2,8 @@
     session_start();
     if (isset($_SESSION['name'])) { 
         $loggedIn = true;
-        require_once("config.php");
+        require_once("configFiles/config.php");
         $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
-        echo "Joel is a sock";
     } else $loggedIn = false;
 ?>
 

@@ -2,7 +2,7 @@
     session_start();
     if (isset($_SESSION['name'])) { 
         $loggedIn = true;
-        require_once("config.php");
+        require_once("configFiles/config.php");
         $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
         echo "Joel is a sock";
     } else $loggedIn = false;
@@ -71,7 +71,7 @@
                     <h2>Counties</h2>
                     
 <?php
-    require_once("config.php");
+    require_once("configFiles/config.php");
     /* This code gets all segments 
     $segmentQuery = "SELECT county, segmentName FROM segmentinfo";
     $result = $dbc->query($segmentQuery)

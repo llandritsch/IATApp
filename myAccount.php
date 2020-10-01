@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("config.php");
+    require_once("configFiles/config.php");
 
     $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
 
@@ -73,11 +73,18 @@
                     $lastName = $row['LastName'];
                     $email = $row['Email'];
                 ?>
-                    <tr scope="row"><td>UserName</td><td><?php echo $username?></td></tr>
-                    <tr scope="row"><td>Name</td><td><?php echo $firstName . " " . $lastName?></td></tr>
-                    <tr scope="row"><td>Email</td><td><?php echo $email?></td></tr>
+                    <div contentEditable="true" class="edit">
+                        <tr scope="row"><td>UserName</td><td><?php echo $username?></td><td><a href="editAccount.php?edit=user">Edit</a></td></tr>
+                    </div>
+                    <div contentEditable="true" class="edit">
+                        <tr scope="row"><td>Name</td><td><?php echo $firstName . " " . $lastName?></td><td><a href="editAccount.php?edit=name">Edit</a></td></tr>
+                    </div>
+                    <div contentEditable="true" class="edit">
+                        <tr scope="row"><td>Email</td><td><?php echo $email?></td><td><a href="editAccount.php">Edit</a></td></tr>
+                    </div>
                 </table>
-                <small class="btn btn-dark accountButton"><a href="editAccount.php">Edit Account Information</a></small>
+        
+                <small class="btn btn-dark accountButton"><a href="deleteAccount.php">Delete Account</a></small>
         </div>
     </main>
 </body>
