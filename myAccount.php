@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Home</title>
 </head>
@@ -73,19 +74,16 @@
                     $lastName = $row['LastName'];
                     $email = $row['Email'];
                 ?>
-                    <div contentEditable="true" class="edit">
-                        <tr scope="row"><td>UserName</td><td><?php echo $username?></td><td><a href="editAccount.php?edit=user">Edit</a></td></tr>
-                    </div>
-                    <div contentEditable="true" class="edit">
-                        <tr scope="row"><td>Name</td><td><?php echo $firstName . " " . $lastName?></td><td><a href="editAccount.php?edit=name">Edit</a></td></tr>
-                    </div>
-                    <div contentEditable="true" class="edit">
-                        <tr scope="row"><td>Email</td><td><?php echo $email?></td><td><a href="editAccount.php">Edit</a></td></tr>
+                        <tr scope="row"><td>UserName</td><td><?php echo $username?></td></tr>
+                        <tr scope="row"><td>First Name</td><td contentEditable="true" class="edit" id="firstName"><?php echo $firstName?></td></tr>
+                        <tr scope="row"><td>Last Name</td><td contentEditable="true" class="edit" id="lastName"><?php echo $lastName?></td></tr>
+                        <tr scope="row"><td>Email</td><td contentEditable="true" class="edit" id="email"><?php echo $email?></td></tr>
                     </div>
                 </table>
         
                 <small class="btn btn-dark accountButton"><a href="deleteAccount.php">Delete Account</a></small>
         </div>
     </main>
+    <script src="JSFiles/editableTable.js"></script>
 </body>
 </html>
