@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("config.php");
+    require_once("configFiles/config.php");
 
     $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
 
@@ -21,7 +21,7 @@
     <div id="bodyContainer">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-            <h1 class="display-4">Edit Account</h1>
+            <h1 class="display-4">Delete Account</h1>
             <p class="loggedInAs">Logged in as: <?php echo "$_SESSION[name]"?></p>
             </div>
         </div>
@@ -62,23 +62,20 @@
     </div>
     <main>
         <div class="mainContainer">
-            <h2>My Account</h2>
-                <table class="table">
-                <?php 
-                    $result = $dbc->query($sql)
-                            or die(mysqli_error($dbc));
-                    $row = mysqli_fetch_array($result);
-                    $username = $row['UserName'];
-                    $firstName = $row['FirstName'];
-                    $lastName = $row['LastName'];
-                    $email = $row['Email'];
-                ?>
-                    <tr scope="row"><td>UserName</td><td><?php echo $username?></td><td><a href="#">Edit</a></td></tr>
-                    <tr scope="row"><td>Name</td><td><?php echo $firstName . " " . $lastName?></td><td><a href="#">Edit</a></td></tr>
-                    <tr scope="row"><td>Email</td><td><?php echo $email?></td><td><a href="#">Edit</a></td></tr>
-                </table>
-                <small class="btn btn-dark accountButton"><a href="deleteAccount.php">Delete Account</a></small>
+            <p>Enter password to delete account</p>
+            <form name="createAccount" method="post" action="configFiles/deleteConfirm.php">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password">
+                    <?php if(isset($_GET['pwIncorrect'])) { ?>
+                        <p class="usernameError">Incorrect Password</p>
+                    <?php }?>
+                </div>
+            </form>
+                
+        
         </div>
     </main>
+    <script src="JSFiles/editableTable.js"></script>
 </body>
 </html>

@@ -1,9 +1,6 @@
 <?php
-
-session_start();
-
-    $dbc = mysqli_connect("localhost", "lisa", "bacon", "iceage")
-        or die(mysqli_error("dbc"));
+    session_start();
+    require_once('configFiles/config.php');
 
     //declare and initialize all user variables   
     $username = "";
