@@ -1,7 +1,5 @@
 <?php
-
-$dbc = mysqli_connect("localhost", "lisa", "bacon", "iceage")
-    or die(mysqli_error("dbc"));
+require_once("configFiles/config.php");
 /*
 $segmentQuery = "SELECT * FROM segmentinfo";
 $result = $dbc->query($segmentQuery)

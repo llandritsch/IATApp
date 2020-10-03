@@ -14,11 +14,11 @@
        function getCountySegments($county) {
             $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
             $segments = "";
-            $countyQuery = "SELECT segmentName FROM segmentinfo WHERE county = '$county'";
+            $countyQuery = "SELECT ID, segmentName FROM segmentinfo WHERE county = '$county'";
             $result = $dbc->query($countyQuery)
                     or die(mysqli_error($dbc));
             while ($row = mysqli_fetch_array($result)) {
-                $segments .= "<p>$row[0]</p>";
+                $segments .= '<a href="segmentinfo.php?id=">$row[0]</p>';
             }
             return $segments;
         }

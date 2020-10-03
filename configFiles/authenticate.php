@@ -23,10 +23,10 @@
                 $_SESSION['id'] = $ID;
                 header('Location: ../myAccount.php');
             } else {
-                header('Location: login.php?pwIncorrect=1');
+                header('Location: ../login.php?pwIncorrect=1');
             }
         } else {
-            header('Location: login.php?userIncorrect=1');
+            header('Location: ../login.php?userIncorrect=1');
         }
 
         $stmt->close();
