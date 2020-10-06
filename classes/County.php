@@ -18,7 +18,7 @@
             $result = $dbc->query($countyQuery)
                     or die(mysqli_error($dbc));
             while ($row = mysqli_fetch_array($result)) {
-                $segments .= '<a href="segmentinfo.php?id=">$row[0]</p>';
+                $segments .= "<a href='segmentInfo.php?id=$row[ID]'>$row[segmentName]</a>";
             }
             return $segments;
         }
