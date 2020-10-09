@@ -3,9 +3,6 @@
     require_once("configFiles/config.php");
 
     $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
-
-
-
 ?>
 
 <!DOCTYPE html>

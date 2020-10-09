@@ -2,9 +2,8 @@
     session_start();
     if (isset($_SESSION['name'])) { 
         $loggedIn = true;
-        require_once("config.php");
+        require_once("configFiles/config.php");
         $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
-        echo "Joel is a sock";
     } else $loggedIn = false;
 ?>
 
@@ -64,8 +63,18 @@
             </nav>
 
         <main>
-            <div class="container">
-                <h2>Completed Segments</h2>
+            <div class="mainContainer">
+                <h2>My Segments</h2>
+
+                <a href="addSegment.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
+
+                <table class="table">
+                    <tr scope="row">
+                        <th>Number of Completed Segments</th>
+                        <th>Number of unique Completed Segments</th>
+                        <th>Percentage of trail Completed</th>
+                    </tr>
+                </table>
             </div>
             
         </main>
