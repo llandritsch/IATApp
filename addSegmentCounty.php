@@ -4,7 +4,6 @@
         $loggedIn = true;
         require_once("configFiles/config.php");
         $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
-        echo "Joel is a sock";
     } else $loggedIn = false;
 ?>
 
@@ -37,34 +36,14 @@
             <div class="mainContainer">
                 <div id="counties">
                     <h2>Counties</h2>
-                    
-<?php
-    require_once("configFiles/config.php");
-    /* This code gets all segments 
-    $segmentQuery = "SELECT county, segmentName FROM segmentinfo";
-    $result = $dbc->query($segmentQuery)
-            or die(mysqli_error("dbc"));
-    $tableRows = "";
-    while ($row = mysqli_fetch_array($result)) {
-
-        $tableRows .= "<tr><td>$row[0]</td><td>$row[1]</td></tr>";
-        
-    }
-    echo $tableRows;
-    
-
-    //Get Segments by county using class
-    require('classes/County.php');
-    $polkAndBurnett = new County();
-    echo $polkAndBurnett -> getCountySegments("Polk & Burnett");
-
-    */
-    
-?>
                 <div class="container">
-                    
-
-            </div>
+                <?php
+                    require_once("configFiles/config.php");
+                    require_once("classes/County.php");
+                    $displayCounty = new County;
+                    $displayCounty->createCountyButtons();
+                ?>
+                 </div>
             
         </main>
     </div>

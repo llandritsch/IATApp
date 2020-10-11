@@ -25,14 +25,12 @@
 
         function createCountyButtons() {
             $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
-            $countyDiv = "";
             $countyQuery = "SELECT DISTINCT county FROM segmentinfo";
             $result = $dbc->query($countyQuery)
                     or die(mysqli_error($dbc));
             while ($row = mysqli_fetch_array($result)) {
-                $countyDiv .= "<p>$row[0]</p>";
+                echo "<p>$row[0]</p>";
             }
-            return $countyDiv;
         }
         
     }
