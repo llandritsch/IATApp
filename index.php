@@ -27,45 +27,12 @@
             <?php } ?>
             </div>
         </div>
-        
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="segments.php">Segment Information</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mySegments.php">My Segments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                    </li>
-                </ul>
-    
-                <?php if ($loggedIn) { ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="myAccount.php">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                </ul>
-                <?php } else { ?>
-                
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                </ul>
-                <?php } ?>
-            </nav>
+        <?php require_once("Views/Navbar.php"); ?>
 
         <main>
 
             <div id="mainFlex">
-                <div id="about">
+                <div id="about" class="container">
                     <h2>About the Ice Age Trail</h2>
                     <p>
                         More than 12,000 years ago, an immense flow of glacial ice sculpted a landscape of remarkable beauty across Wisconsin. 

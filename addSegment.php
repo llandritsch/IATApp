@@ -78,7 +78,7 @@
                 <form name="createAccount" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
 <!-- what is the best way to get the segment name since there are so many? -->
                     <div class="form-group">
-                        <label for="Segment">First Name</label>
+                        <label for="Segment">Segment Name</label>
                         <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $segment; ?>" required/>
                     </div>
                     <div class="form-group">
