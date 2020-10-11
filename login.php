@@ -1,6 +1,13 @@
-
-    <!DOCTYPE html>
-    <html>
+<?php
+    session_start();
+    if (isset($_SESSION['name'])) { 
+        $loggedIn = true;
+        require_once("configFiles/config.php");
+        $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
+    } else $loggedIn = false;
+?>
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
@@ -11,22 +18,8 @@
         <div class="jumbotron">
             <h1>Login</h1>
         </div>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="segments.html">Segment Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mySegments.html">My Segments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                </li>
-            </ul>
-        </nav>
+        <!-- Nabvar -->
+        <?php require_once("Views/Navbar.php"); ?>
 
         <div id="form-container">
         <form action="configFiles/authenticate.php" method="POST" >

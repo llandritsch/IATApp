@@ -27,6 +27,7 @@
             <?php } ?>
             </div>
         </div>
+        <!-- Nabvar -->
         <?php require_once("Views/Navbar.php"); ?>
 
         <main>

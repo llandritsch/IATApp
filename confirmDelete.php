@@ -22,28 +22,7 @@
             </div>
         </div>
         
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="segments.php">Segment Information</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mySegments.html">My Segments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                    </li>
-                </ul>
-                
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                </ul>
-            </nav>
+        <?php require_once("Views/Navbar.php"); ?>
 
         <main>
 

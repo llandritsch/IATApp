@@ -56,22 +56,9 @@
         <div class="jumbotron">
             <h1 class="display-4">Add Completed Segment</h1>
         </div>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="segments.html">Segment Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mySegments.html">My Segments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                </li>
-            </ul>
-        </nav>
+        
+        <?php require_once("Views/Navbar.php"); ?>
+
         <div id="form-container">
             <div > 
                 <h2>Fill out the following to add a completed segment.</h2>
