@@ -38,15 +38,9 @@
                     <h2>Counties</h2>
                 <div class="container">
                 <?php
-                    //Display county buttons 
-                    require_once("configFiles/config.php");
-                    require_once("classes/County.php");
-                    $displayCounty = new County;
-                    $displayCounty->createCountyButtons();
+                    require_once('Views/CountyView.php');
                 ?>
-                 </div>
-                 <div class="container">
-                    <div class="collapse" data-toggle="collapse"
+                 
 
                  </div>
             
