@@ -29,7 +29,7 @@
             $result = $dbc->query($countyQuery)
                     or die(mysqli_error($dbc));
             while ($row = mysqli_fetch_array($result)) {
-                echo "<p>$row[0]</p>";
+                echo "<button class=\"btn btn-dark ml-2 ml-2 mt-2\">$row[0]</button>";
             }
         }
         

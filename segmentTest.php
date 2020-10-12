@@ -47,7 +47,7 @@
                     <h2>Counties</h2>
                     
 <?php
-    require_once("config.php");
+    //require_once("config.php");
     /* This code gets all segments 
     $segmentQuery = "SELECT county, segmentName FROM segmentinfo";
     $result = $dbc->query($segmentQuery)
@@ -71,9 +71,7 @@
 ?>
                 <div class="container">
                     <?php
-                        require('classes/County.php');
-                        $county = new County();
-                        echo $county->createCountyButtons();
+                        require_once('Views/CountyView.php');
                     ?>
                     
                 </div>
