@@ -92,6 +92,7 @@
 
                     // display segment information
                     echo "<h1>$segmentName</h1>";
+                    echo "<a href=\"addSegment.php?segmentName={$segmentName}\"><button class=\"btn btn-dark\">Add to Completed Segments</button></a>";
                     echo "<ul><li>County: $county</li>";
                     echo "<li>Distance: $distance</li>";
                     echo "<li>Elevation Grade: $elevationGrade</li>";

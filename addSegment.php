@@ -1,48 +1,36 @@
 <?php
  session_start();
- require_once("configFiles/config.php");
-
- $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
+ if (isset($_SESSION['name'])) { 
+     $loggedIn = true;
+     require_once("configFiles/config.php");
+     $sql = "SELECT* FROM userinfo WHERE username = '$_SESSION[name]'";
+ } else $loggedIn = false;
 
 
     //declare and initialize all user variables   
     $segment = "";
+    $date = "";
     $distance = "";
     $time = "";
+    $pace = "";
     $elevationGain = "";
     $elevationLoss = "";
     $comments = "";
 
-    // Process form data when form is submitted
-    //if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        /*
-        //validate username
-        if (empty($username)) {
-            echo "Please enter a username.";
-        } else {
-            $userNameQuery = "SELECT ID FROM userInfo WHERE username = '$username'";
-            $result = $dbc->query($userNameQuery)
-                    or die(mysqli_error($dbc));
-            if (mysqli_num_rows($result) !== 0) {
-                $userNameTaken = true;
-            } else {
-                //validate confirm password
-                if (empty($confirmPassword)) {
-                    echo "Please confirm your password.";
-                } else if ($confirmPassword != $password) {
-                    $passwordsDontMatch = true;
-                } else {
-                    $password = password_hash($password, PASSWORD_DEFAULT);
-                    $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
-                    $addResult = $dbc->query($insertQuery)
-                            or die(mysqli_error($dbc));
-                    header("location:login.php");
-                }
-            }
-        } 
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $segment = $_POST['segment'];
+        $username = $_SESSION['name'];
+        $date = $_POST['date'];
+        $distance = $_POST['distance'];
+        $time = $_POST['time'];
+        $pace = $_POST['pace'];
+        $elevationGain = $_POST['elevationGain'];
+        $elevationLoss = $_POST['elevationLoss'];
+        $comments = $_POST['comments'];
 
+        $stmt = $dbc->prepare('INSERT INTO usersegments (userID, segmentID, DateCompleted, distance, time, Pace, elevationGain, elevationLoss, comments) 
+                VALUES ($userID, $segmentID, $date, $distance, $time, $pace, $elevationGain, $elevationLoss, $comments)');
     }
-    */
 ?>
 
 <html>
@@ -62,11 +50,15 @@
         <div id="form-container">
             <div > 
                 <h2>Fill out the following to add a completed segment.</h2>
-                <form name="createAccount" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-<!-- what is the best way to get the segment name since there are so many? -->
-                    <div class="form-group">
+                <form name="addSegment" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+<!-- this portion is auto filled by the segment pg and is disabled for the user -->
+                    <div class="SegmentName">
                         <label for="Segment">Segment Name</label>
-                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $segment; ?>" required/>
+                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $_GET['segmentName']; ?>" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date Completed</label>
+                        <input class="form-control" type="text" id="date" name="date" value="<?php echo $distance; ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="distance">Recorded Distance</label>
@@ -75,6 +67,10 @@
                     <div class="form-group">
                         <label for="email">Recorded Time</label>
                         <input class="form-control" type="text" id="time" name="time" value="<?php echo $time; ?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="pace">Pace</label>
+                        <input class="form-control" type="text" id="pace" name="pace" value="<?php echo $pace; ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="elevationGain">Recorded Elevation Gain</label>
@@ -87,6 +83,10 @@
                     <div class="form-group">
                         <label for="comments">Recorded Elevation Gain</label>
                         <input class="form-control" type="textarea" id="comments" name="comments" value="<?php echo $comments; ?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Segment Comments</label>
+                        <textarea class="form-control" id="comments" name="comments" value="<?php echo $comments; ?>">Your comments here</textarea>
                     </div>
 
                     <input type="submit" class="btn btn-dark" value="Submit" />

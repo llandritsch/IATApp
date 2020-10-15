@@ -35,8 +35,8 @@
 
             <div class="mainContainer">
                 <div id="counties">
-                    <h2>Counties</h2>
-                <div class="container">
+                    <h2>Select the county of the completed segment to continue</h2>
+                <div class="container d-flex flex-wrap">
                 <?php
                     require_once('Views/CountyView.php');
                 ?>

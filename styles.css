@@ -76,6 +76,13 @@ main {
     background-color: white;
 }
 
+.segmentButton {
+    width: 20em;
+}
+.segmentCard {
+    width: 20em;
+}
+
 /*my account styles */
 .accountButton a{
     color: white;

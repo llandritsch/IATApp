@@ -35,7 +35,7 @@
             <div class="mainContainer">
                 <h2>My Segments</h2>
 
-                <a href="addSegment.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
+                <a href="addSegmentCounty.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
 
                 <table class="table">
                     <tr scope="row">
