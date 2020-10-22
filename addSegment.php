@@ -8,7 +8,8 @@
 
 
     //declare and initialize all user variables   
-    $segment = "";
+    $segmentID = $_GET['segmentID'];
+    $segment = $_GET['segmentName'];
     $date = "";
     $distance = "";
     $time = "";
@@ -16,21 +17,6 @@
     $elevationGain = "";
     $elevationLoss = "";
     $comments = "";
-
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $segment = $_POST['segment'];
-        $username = $_SESSION['name'];
-        $date = $_POST['date'];
-        $distance = $_POST['distance'];
-        $time = $_POST['time'];
-        $pace = $_POST['pace'];
-        $elevationGain = $_POST['elevationGain'];
-        $elevationLoss = $_POST['elevationLoss'];
-        $comments = $_POST['comments'];
-
-        $stmt = $dbc->prepare('INSERT INTO usersegments (userID, segmentID, DateCompleted, distance, time, Pace, elevationGain, elevationLoss, comments) 
-                VALUES ($userID, $segmentID, $date, $distance, $time, $pace, $elevationGain, $elevationLoss, $comments)');
-    }
 ?>
 
 <html>
@@ -50,11 +36,12 @@
         <div id="form-container">
             <div > 
                 <h2>Fill out the following to add a completed segment.</h2>
-                <form name="addSegment" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+                <form name="addSegment" action="configFiles/confirmAddSegment.php" method="post">
+                    <input name="segmentID" type="hidden" value="<?php echo $segmentID ?>"/>
 <!-- this portion is auto filled by the segment pg and is disabled for the user -->
-                    <div class="SegmentName">
-                        <label for="Segment">Segment Name</label>
-                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $_GET['segmentName']; ?>" disabled/>
+                    <div class="form-group">
+                        <label for="segment">Segment Name</label>
+                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $segment ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="date">Date Completed</label>
@@ -77,12 +64,8 @@
                         <input class="form-control" type="text" id="elevationGain" name="elevationGain" value="<?php echo $elevationGain; ?>"/>
                     </div>
                     <div class="form-group">
-                        <label for="elevationLoss">Recorded Elevation Gain</label>
+                        <label for="elevationLoss">Recorded Elevation Loss</label>
                         <input class="form-control" type="text" id="elevationLoss" name="elevationLoss" value="<?php echo $elevationLoss; ?>"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="comments">Recorded Elevation Gain</label>
-                        <input class="form-control" type="textarea" id="comments" name="comments" value="<?php echo $comments; ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="comments">Segment Comments</label>

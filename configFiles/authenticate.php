@@ -11,7 +11,7 @@
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
         $stmt->store_result();
-
+ 
         if ($stmt->num_rows > 0) {
             $stmt->bind_result($ID, $password);
             $stmt->fetch();
