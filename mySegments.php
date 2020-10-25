@@ -40,12 +40,16 @@
                 <table class="table">
                     <tr scope="row">
                         <th>Number of Completed Segments</th>
-                        <?php 
-                            require_once('configFiles/segmentDBControl.php');
-                            echo getUserSegments();
-                        ?>
                         <th>Number of unique Completed Segments</th>
                         <th>Percentage of trail Completed</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php 
+                            require_once('configFiles/segmentDBControl.php');
+                            echo getUserSegments();
+                            ?>
+                        </td>
                     </tr>
 
                 </table>
