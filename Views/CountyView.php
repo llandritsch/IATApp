@@ -9,7 +9,7 @@ function createView($href, $countyNoSpace, $countyName, $viewCount) {
 <div><a class=\"btn btn-outline-dark segmentButton mb-2 ml-2\" data-toggle=\"collapse\" href=\"$href\" role=\"button\" aria-expanded=\"false\">$countyName</a>
     <div class=\"collapse\" id=\"$countyNoSpace\">
         <div class=\"card card-body segmentCard\">
-            $segments 
+            $segments
         </div>
     </div>
 </div>";

@@ -41,11 +41,11 @@
 <!-- this portion is auto filled by the segment pg and is disabled for the user -->
                     <div class="form-group">
                         <label for="segment">Segment Name</label>
-                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $segment ?>"/>
+                        <input class="form-control" type="text" id="segment" name="segment" value="<?php echo $segment ?>" required/>
                     </div>
                     <div class="form-group">
                         <label for="date">Date Completed</label>
-                        <input class="form-control" type="text" id="date" name="date" value="<?php echo $distance; ?>"/>
+                        <input class="form-control" type="text" id="date" name="date" value="<?php echo $distance; ?>" placeholder="yyyy-mm-dd"/>
                     </div>
                     <div class="form-group">
                         <label for="distance">Recorded Distance</label>
@@ -53,11 +53,11 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Recorded Time</label>
-                        <input class="form-control" type="text" id="time" name="time" value="<?php echo $time; ?>"/>
+                        <input class="form-control" type="text" id="time" name="time" value="<?php echo $time; ?>"placeholder="in minutes"/>
                     </div>
                     <div class="form-group">
                         <label for="pace">Pace</label>
-                        <input class="form-control" type="text" id="pace" name="pace" value="<?php echo $pace; ?>"/>
+                        <input class="form-control" type="text" id="pace" name="pace" value="<?php echo $pace; ?>"placeholder="ex: 9.37"/>
                     </div>
                     <div class="form-group">
                         <label for="elevationGain">Recorded Elevation Gain</label>
