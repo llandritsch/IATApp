@@ -1,5 +1,4 @@
 <?php
-
     //Get user Segments
     function getUserSegments() {
         $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
@@ -7,12 +6,13 @@
         $stmt = $dbc->prepare("SELECT * FROM usersegments WHERE userID = $userID");
         $stmt->execute();
         $result = $stmt->get_result();
-        echo getNumberOfSegments($result);
-        echo "<hr/>";
+        $totalMiles =  getTotalMiles($result);
+        $numberOfSegments =  getNumberOfSegments($result);
         $uniqueSegments = getUniqueSegments($result);
-        echo "<hr/>";
-        echo getPercentageComplete($uniqueSegments);
-        echo getNumberOfMiles($result);
+        $percentComplete = getPercentageComplete($uniqueSegments);
+        $tableArray = array($totalMiles, $numberOfSegments, $uniqueSegments, $percentComplete);
+
+        echo $tableArray;
     }
 
     function getNumberOfSegments($result) {
@@ -21,12 +21,15 @@
     }
 
     function getUniqueSegments($result) {
+        $miles = 0;
         $UniqueSegments = array();
         while($row = $result->fetch_array()) {
             if (!in_array($row['segmentID'], $UniqueSegments)) {
                 array_push($UniqueSegments, $row['segmentID']);
+                $miles += $row['distance'];
             }
         }
+        echo $miles;
         return count($UniqueSegments);
     }
 
@@ -35,13 +38,17 @@
         return $percentageComplete; 
     }
 
-    function getNumberOfMiles($result) {
-        $numberOfMiles = 0;
+    function getTotalMiles($result) {
+        $miles = 0;
+        $UniqueSegments = array();
         while($row = $result->fetch_array()) {
-            echo $row['distance'];
-            echo "sup";
-            $numberOfMiles += $row['distance'];
+            if (!in_array($row['segmentID'], $UniqueSegments)) {
+                array_push($UniqueSegments, $row['segmentID']);
+                $miles += $row['distance'];
+            }
         }
-        return $numberOfMiles;
+        return $miles;
     }
+    
+    
 ?>

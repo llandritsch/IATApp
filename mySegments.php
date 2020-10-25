@@ -42,6 +42,7 @@
                         <th>Number of Completed Segments</th>
                         <th>Number of unique Completed Segments</th>
                         <th>Percentage of trail Completed</th>
+                        <th>Completed Miles</th>
                     </tr>
                     <tr>
                         <td>
