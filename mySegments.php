@@ -19,12 +19,12 @@
 <body>
     <div id="bodyContainer">
         <div class="jumbotron jumbotron-fluid">
+        <?php if ($loggedIn) {
+            require_once('Views/topNav.php');
+            }?>
             <div class="container">
             <h1 class="display-4">Ice Age Segment Tracker</h1>
             <p class="lead">Segment information and personal data collection</p>
-            <?php if ($loggedIn) {?>
-                <p class="loggedInAs">Logged in as: <?php echo "$_SESSION[name]"?></p>
-            <?php } ?>
             </div>
         </div>
         
@@ -36,19 +36,36 @@
                 <h2>My Segments</h2>
 
                 <a href="addSegmentCounty.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
-
+                <?php 
+                    require_once('configFiles/segmentDBControl.php');
+                    $tableArray = getUserSegments();
+                ?>
                 <table class="table">
                     <tr scope="row">
+                        <th>Completed Miles</th>
                         <th>Number of Completed Segments</th>
                         <th>Number of unique Completed Segments</th>
                         <th>Percentage of trail Completed</th>
-                        <th>Completed Miles</th>
                     </tr>
                     <tr>
                         <td>
                             <?php 
-                            require_once('configFiles/segmentDBControl.php');
-                            echo getUserSegments();
+                                echo getTotalMiles();
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                echo getNumberOfSegments();
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                echo getUniqueSegments();
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                echo getPercentageComplete();
                             ?>
                         </td>
                     </tr>

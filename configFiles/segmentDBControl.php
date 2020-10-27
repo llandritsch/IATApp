@@ -6,39 +6,35 @@
         $stmt = $dbc->prepare("SELECT * FROM usersegments WHERE userID = $userID");
         $stmt->execute();
         $result = $stmt->get_result();
-        $totalMiles =  getTotalMiles($result);
-        $numberOfSegments =  getNumberOfSegments($result);
-        $uniqueSegments = getUniqueSegments($result);
-        $percentComplete = getPercentageComplete($uniqueSegments);
-        $tableArray = array($totalMiles, $numberOfSegments, $uniqueSegments, $percentComplete);
 
-        echo $tableArray;
+        return  $result;
     }
 
-    function getNumberOfSegments($result) {
+    function getNumberOfSegments() {
+        $result = getUserSegments();
         $numberOfSegments = mysqli_num_rows($result);
         return $numberOfSegments;
     }
 
-    function getUniqueSegments($result) {
-        $miles = 0;
+    function getUniqueSegments() {
+        $result = getUserSegments();
         $UniqueSegments = array();
         while($row = $result->fetch_array()) {
             if (!in_array($row['segmentID'], $UniqueSegments)) {
                 array_push($UniqueSegments, $row['segmentID']);
-                $miles += $row['distance'];
             }
         }
-        echo $miles;
         return count($UniqueSegments);
     }
 
-    function getPercentageComplete($uniqueSegments) {
+    function getPercentageComplete() {
+        $uniqueSegments = getUniqueSegments();
         $percentageComplete = round($uniqueSegments / 188, 2);
         return $percentageComplete; 
     }
 
-    function getTotalMiles($result) {
+    function getTotalMiles() {
+        $result = getUserSegments();
         $miles = 0;
         $UniqueSegments = array();
         while($row = $result->fetch_array()) {
