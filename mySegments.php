@@ -18,7 +18,7 @@
 </head>
 <body>
     <div id="bodyContainer">
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid mt-0 pt-0">
         <?php if ($loggedIn) {
             require_once('Views/topNav.php');
             }?>
