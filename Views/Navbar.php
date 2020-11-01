@@ -18,7 +18,7 @@
                         <a class="nav-link" href="mySegments.php">My Segments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="myAccount.php">My Account</a>
+                        <a class="nav-link" href="myAccount.php">My Account(<?php echo "$_SESSION[name]"?>)</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>

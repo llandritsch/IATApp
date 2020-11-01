@@ -22,9 +22,6 @@
             <div class="container">
             <h1 class="display-4">Ice Age Segment Tracker</h1>
             <p class="lead">Segment information and personal data collection</p>
-            <?php if ($loggedIn) {?>
-                <p class="loggedInAs">Logged in as: <?php echo "$_SESSION[name]"?></p>
-            <?php } ?>
             </div>
         </div>
         

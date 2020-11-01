@@ -22,7 +22,6 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
             <h1 class="display-4">Account Information</h1>
-            <p class="loggedInAs">Logged in as: <?php echo "$_SESSION[name]"?></p>
             </div>
         </div>
         

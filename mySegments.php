@@ -19,9 +19,6 @@
 <body>
     <div id="bodyContainer">
         <div class="jumbotron jumbotron-fluid mt-0 pt-0">
-        <?php if ($loggedIn) {
-            require_once('Views/topNav.php');
-            }?>
             <div class="container">
             <h1 class="display-4">Ice Age Segment Tracker</h1>
             <p class="lead">Segment information and personal data collection</p>
