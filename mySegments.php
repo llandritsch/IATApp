@@ -40,26 +40,31 @@
                 <table class="table">
                     <tr scope="row">
                         <th>Completed Miles</th>
-                        <th>Number of Completed Segments</th>
-                        <th>Number of unique Completed Segments</th>
-                        <th>Percentage of trail Completed</th>
-                    </tr>
-                    <tr>
                         <td>
                             <?php 
                                 echo getTotalMiles();
                             ?>
                         </td>
+                    </tr>
+                    <tr scope="row">
+                        <th>Number of Completed Segments</th>
                         <td>
                             <?php
                                 echo getNumberOfSegments();
                             ?>
                         </td>
+                    </tr>
+                    <tr scope="row">
+                        <th>Number of unique Completed Segments</th>
                         <td>
                             <?php
                                 echo getUniqueSegments();
                             ?>
                         </td>
+                    </tr>
+                    </tr>
+                    <tr scope="row">
+                        <th>Percentage of trail Completed</th>
                         <td>
                             <?php
                                 echo getPercentageComplete();
@@ -68,6 +73,21 @@
                     </tr>
 
                 </table>
+
+                <div id="counties">
+                    <h2>Completed Segments</h2>
+                <div class="container d-flex flex-wrap">
+                <?php
+                    require_once("configFiles/config.php");   
+                    require_once('Views/MySegmentView.php');
+                ?>  <table class="table"> 
+                    <tr><th>Date Completed</th><th>County</th><th>Segment</th></tr>
+                <?php getCompletedSegments();?>
+                    </table>
+                <?php  getSegmentsByCounty();
+                    
+                ?>
+                </div>
             </div>
             
         </main>
