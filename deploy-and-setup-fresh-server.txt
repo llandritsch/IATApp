@@ -1,0 +1,38 @@
+SETUP: To be performed in an SSH session inside of your EC2 instance
+
+# Set up apache2
+sudo apt-get update
+sudo apt-get install apache2
+sudo ufw allow in "Apache Full"
+
+# Rename the default index.html file
+mv index.html index-default-apache.html
+
+# Install mysql
+sudo apt install mysql-server
+sudo service msyql start
+
+# Connect to mysql as root
+sudo mysql;
+# Add a custom user
+CREATE USER 'lisa'@'localhost' IDENTIFIED BY 'bacon';
+# Make them a god
+GRANT ALL PRIVILEGES ON * . * TO 'lisa'@'localhost';
+# Flush privileges
+FLUSH PRIVILEGES;
+# Exit mysql
+exit;
+
+# Install PHP
+sudo apt install php libapache2-mod-php php-mysql
+
+# Restart apache2
+sudo systemctl restart apache2
+
+# Grab ownership of the /var/www/html folder
+sudo chown -R $(whoami) /var/www/html
+
+DEPLOY: To be run from you Mac/dev machine
+
+# Run this every time you want to deploy your app
+scp -r -i "~/Desktop/AWS/IceAgeTrailApp.pem" ~/Sites/IATApp/* ubuntu@ec2-18-217-36-223.us-east-2.compute.amazonaws.com:/var/www/html

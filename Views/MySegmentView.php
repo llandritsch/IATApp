@@ -14,32 +14,50 @@
     function getSegmentsByCounty() {
         $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
         $userQuery = "SELECT * FROM usersegments u JOIN segmentinfo s ON u.segmentID = s.ID WHERE u.userID = $_SESSION[id]";
-        //$countyquery = "SELECT DISTINCT county FROM segmentinfo s JOIN usersegments u ON s.ID = u.segmentID WHERE u.userID = $_SESSION[id]";
         $result = $dbc->query($userQuery)
                     or die(mysqli_error($dbc));
-    
-        $countyList = array();
+
+        /* A map of counties and all segments for the county
+        // Ex: array(
+            "Some County" => array("Segment 1", "Segment 2"),
+            "Another County => array("Segment 3")
+        )
+        */
+        $segmentsByCounty = array();
 
         while ($row = mysqli_fetch_array($result)) {
-            //add county, segmentname and set count to 1 if the county is not already in the countyList
             $countyName = $row[11];
-            if (!array_search($countyName, array_column($countyList, 'county'))) {
-                $county = array('county' => $row[11], 'segment' => $row[12], 'count' => 1);
-                array_push($countyList, $county);
-            // if the county is already in the list but the segment is not, then add segment and increase count by 1
-            } else if (!($county = array_search($row[11], array_column($countyList, $row[12])))) {
-                echo "segment not in the array";
+            $segmentName = $row[12];
+
+            if (array_key_exists($countyName, $segmentsByCounty)) {
+                array_push($segmentsByCounty[$countyName], $segmentName);
+            } else {
+                $segmentsByCounty[$countyName] = [$segmentName];
             }
+            // Remove any duplicate segments in the list of segments for this county
+            $segmentsByCounty[$countyName] = array_unique($segmentsByCounty[$countyName]);
         }
 
-        echo count($countyList);
-        
-        
+        createStatusBarsForCounty($segmentsByCounty);        
     }
 
-    function getCountyPercent($county) {
-        $dbc =mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
-        $countyQuery;
+    function createStatusBarsForCounty($segmentsByCounty) {
+        foreach ($segmentsByCounty as $county) {
+            $count = count($county);
+            echo $count;
+        }
+    }
+
+    function getCountyPercent($county, $numberComplete) {
+        $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
+        $countQuery = "SELECT COUNT(ID) FROM segmentinfo WHERE county = '$county'";
+        $result = $dbc->query($countQuery)
+                or die(mysqli_error($dbc));
+        $row = $result->fetch_row();
+        $count = $row[0];
+        $percentComplete = ($numberComplete / $count) * 100; 
+
+        return $percentComplete;
     }
 ?>
 

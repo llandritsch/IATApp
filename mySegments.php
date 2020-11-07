@@ -84,8 +84,9 @@
                     <tr><th>Date Completed</th><th>County</th><th>Segment</th></tr>
                 <?php getCompletedSegments();?>
                     </table>
+          <!-- Generate County Completion Status Bars -->
                 <?php  getSegmentsByCounty();
-                    
+                        //getCountyPercent();
                 ?>
                 </div>
             </div>
