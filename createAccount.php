@@ -26,7 +26,7 @@
         if (empty($username)) {
             echo "Please enter a username.";
         } else {
-            $userNameQuery = "SELECT ID FROM userInfo WHERE username = '$username'";
+            $userNameQuery = "SELECT ID FROM userinfo WHERE username = '$username'";
             $result = $dbc->query($userNameQuery)
                     or die(mysqli_error($dbc));
             if (mysqli_num_rows($result) !== 0) {
@@ -39,7 +39,7 @@
                     $passwordsDontMatch = true;
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    $insertQuery = "INSERT INTO userInfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
+                    $insertQuery = "INSERT INTO userinfo (UserName, Password, FirstName, LastName, Email) VALUES ('$username', '$password', '$firstName', '$lastName', '$email')";
                     $addResult = $dbc->query($insertQuery)
                             or die(mysqli_error($dbc));
                     header("location:login.php");
