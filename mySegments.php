@@ -33,64 +33,71 @@
                 <h2>My Segments</h2>
 
                 <a href="addSegmentCounty.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
-                <?php 
-                    require_once('configFiles/segmentDBControl.php');
-                    $tableArray = getUserSegments();
-                ?>
-                <table class="table">
-                    <tr scope="row">
-                        <th>Completed Miles</th>
-                        <td>
-                            <?php 
-                                echo getTotalMiles();
-                            ?>
-                        </td>
-                    </tr>
-                    <tr scope="row">
-                        <th>Number of Completed Segments</th>
-                        <td>
-                            <?php
-                                echo getNumberOfSegments();
-                            ?>
-                        </td>
-                    </tr>
-                    <tr scope="row">
-                        <th>Number of unique Completed Segments</th>
-                        <td>
-                            <?php
-                                echo getUniqueSegments();
-                            ?>
-                        </td>
-                    </tr>
-                    </tr>
-                    <tr scope="row">
-                        <th>Percentage of trail Completed</th>
-                        <td>
-                            <?php
-                                echo getPercentageComplete();
-                            ?>
-                        </td>
-                    </tr>
+                <div class="container">
+                    <?php 
+                        require_once('configFiles/segmentDBControl.php');
+                        $tableArray = getUserSegments();
+                    ?>
+                    <table class="table">
+                        <tr scope="row">
+                            <th>Completed Miles</th>
+                            <td>
+                                <?php 
+                                    echo getTotalMiles();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr scope="row">
+                            <th>Number of Completed Segments</th>
+                            <td>
+                                <?php
+                                    echo getNumberOfSegments();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr scope="row">
+                            <th>Number of unique Completed Segments</th>
+                            <td>
+                                <?php
+                                    echo getUniqueSegments();
+                                ?>
+                            </td>
+                        </tr>
+                        </tr>
+                        <tr scope="row">
+                            <th>Percentage of trail Completed</th>
+                            <td>
+                                <?php
+                                    echo getPercentageComplete();
+                                ?>
+                            </td>
+                        </tr>
 
-                </table>
-
-                <div id="counties">
-                    <h2>Completed Segments</h2>
-                <div class="container d-flex flex-wrap">
-                <?php
-                    require_once("configFiles/config.php");   
-                    require_once('Views/MySegmentView.php');
-                ?>  <table class="table"> 
-                    <tr><th>Date Completed</th><th>County</th><th>Segment</th></tr>
-                <?php getCompletedSegments();?>
                     </table>
-          <!-- Generate County Completion Status Bars -->
-                <?php  getSegmentsByCounty();
-                        //getCountyPercent();
-                ?>
                 </div>
-            </div>
-            
+                <div class="row p-3">
+                    <div id="counties" class="col-sm-6">
+                        <h2>Completed Segments</h2>
+                        <div class="container">
+                            <?php
+                                require_once("configFiles/config.php");   
+                                require_once('Views/MySegmentView.php');
+                            ?>  <table class="table table-striped"> 
+                                <thead><tr><th>Date Completed</th><th>County</th><th>Segment</th></tr></thead>
+                                <tbody>
+                            <?php getCompletedSegments();?>
+                                </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    <!-- Generate County Completion Status Bars -->
+                    <div class="container col-sm-6">
+                        <h2>County Completion</h2>
+                        <div class="statusBars">
+                            <?php  getSegmentsByCounty();?>
+                        </div>
+                    </div>
+                </div>
         </main>
     </div>
 </body>

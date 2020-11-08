@@ -42,9 +42,17 @@
     }
 
     function createStatusBarsForCounty($segmentsByCounty) {
-        foreach ($segmentsByCounty as $county) {
-            $count = count($county);
-            echo $count;
+        foreach ($segmentsByCounty as $county => $segments) {
+            $count = count($segments);
+            $percent = getCountyPercent($county, $count);
+            echo $county;
+        
+            $statusBar = 
+                    '<div class="progress" style="height: 25px">
+                        <div class="progress-bar" role="progressbar" style="width: '. $percent .'%;">' . $percent . '%</div>
+                    </div>';
+            
+            echo $statusBar;
         }
     }
 
@@ -55,7 +63,8 @@
                 or die(mysqli_error($dbc));
         $row = $result->fetch_row();
         $count = $row[0];
-        $percentComplete = ($numberComplete / $count) * 100; 
+        $calcPercent = ($numberComplete / $count) * 100; 
+        $percentComplete = round($calcPercent, 2);
 
         return $percentComplete;
     }
