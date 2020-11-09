@@ -30,7 +30,7 @@
 
         <main>
 
-            <div class="mainContainer">
+            <div id="about" class="mainContainer mb-4">
                 <div id="counties">
                     <h2>Counties</h2>
                     

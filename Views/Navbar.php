@@ -7,9 +7,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="segments.php">Segment Information</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                    </li>
                 </ul>
     
                 <?php if ($loggedIn) { ?>

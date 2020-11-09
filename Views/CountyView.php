@@ -6,7 +6,7 @@ function createView($href, $countyNoSpace, $countyName, $viewCount) {
     $segments = $county -> getCountySegments($countyName);
 
     return "
-<div><a class=\"btn btn-outline-dark segmentButton mb-2 ml-2\" data-toggle=\"collapse\" href=\"$href\" role=\"button\" aria-expanded=\"false\">$countyName</a>
+<div><a class=\"btn btn-dark segmentButton mb-2 ml-2\" data-toggle=\"collapse\" href=\"$href\" role=\"button\" aria-expanded=\"false\">$countyName</a>
     <div class=\"collapse\" id=\"$countyNoSpace\">
         <div class=\"card card-body segmentCard\">
             $segments

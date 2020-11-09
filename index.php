@@ -30,7 +30,7 @@
         <main>
 
             <div id="mainFlex">
-                <div id="about" class="container">
+                <div id="about" class="container p-2">
                     <h2>About the Ice Age Trail</h2>
                     <p>
                         More than 12,000 years ago, an immense flow of glacial ice sculpted a landscape of remarkable beauty across Wisconsin. 
