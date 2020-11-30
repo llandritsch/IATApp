@@ -45,5 +45,6 @@
         </div>
     </main>
     <script src="JSFiles/editableTable.js"></script>
+    <?php require_once("Views/Footer.php"); ?>
 </body>
 </html>

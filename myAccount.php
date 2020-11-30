@@ -30,9 +30,10 @@
         
     </div>
     <main>
-        <div class="mainContainer">
-            <h2>My Account</h2>
-                <table class="table">
+        <div class="mainContainer p-4 mb-4">
+            <h2 style="text-align: center">My Account</h2>
+                <small><b>Click in name or email field to update your account information</b></small>
+                <table class="table table-striped m-3">
                 <?php 
                     $result = $dbc->query($sql)
                             or die(mysqli_error($dbc));
@@ -42,16 +43,18 @@
                     $lastName = $row['LastName'];
                     $email = $row['Email'];
                 ?>
-                        <tr scope="row"><td>UserName</td><td><?php echo $username?></td></tr>
-                        <tr scope="row"><td>First Name</td><td contentEditable="true" class="edit" id="firstName"><?php echo $firstName?></td></tr>
-                        <tr scope="row"><td>Last Name</td><td contentEditable="true" class="edit" id="lastName"><?php echo $lastName?></td></tr>
-                        <tr scope="row"><td>Email</td><td contentEditable="true" class="edit" id="email"><?php echo $email?></td></tr>
+                        <tr scope="row"><td><b>UserName</b></td><td><?php echo $username?></td></tr>
+                        <tr scope="row"><td><b>First Name</b></td><td contentEditable="true" class="edit" id="firstName"><?php echo $firstName?></td></tr>
+                        <tr scope="row"><td><b>Last Name</b></td><td contentEditable="true" class="edit" id="lastName"><?php echo $lastName?></td></tr>
+                        <tr scope="row"><td><b>Email</b></td><td contentEditable="true" class="edit" id="email"><?php echo $email?></td></tr>
                     </div>
                 </table>
         
                 <small class="btn btn-dark accountButton"><a href="deleteAccount.php">Delete Account</a></small>
         </div>
+        <div class="mb-4"></div>
     </main>
+    <?php require_once("Views/Footer.php"); ?>
     <script src="JSFiles/editableTable.js"></script>
 </body>
 </html>

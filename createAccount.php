@@ -11,12 +11,13 @@
     $email = "";
     $userNameTaken = false;
     $passwordsDontMatch = false;
+    $loggedIn = false;
 
     // Process form data when form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $firstName = trim($_POST['firstName']);
-        $lastName = trim($_POST['lastName']);
+        $lastName = trim($_POST['lastName']); 
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         $confirmPassword = trim($_POST['confirmPassword']);
@@ -106,5 +107,6 @@
             </div>
         </div>
         <script src="validation.js"></script>
+        <?php require_once("Views/Footer.php"); ?>
     </body>
 </html>

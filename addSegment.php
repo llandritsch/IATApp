@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="date">Date Completed</label>
-                        <input class="form-control" type="text" id="date" name="date" value="<?php echo $distance; ?>" placeholder="yyyy-mm-dd"/>
+                        <input class="form-control" type="date" id="date" name="date" value="<?php echo $distance; ?>" placeholder="yyyy-mm-dd"/>
                     </div>
                     <div class="form-group">
                         <label for="distance">Recorded Distance</label>
@@ -77,5 +77,6 @@
                 </form>
             </div>
         </div>
+        <?php require_once("Views/Footer.php"); ?>
     </body>
 </html>

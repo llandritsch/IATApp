@@ -34,8 +34,11 @@
 
                 <a href="addSegmentCounty.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
                 <div class="container">
-                    <?php 
+                    <?php   
                         require_once('configFiles/segmentDBControl.php');
+                        require_once("configFiles/config.php");   
+                        require_once('Views/MySegmentView.php');
+
                         $tableArray = getUserSegments();
                     ?>
                     <table class="table">
@@ -69,19 +72,19 @@
                             <td>
                                 <?php
                                     echo getPercentageComplete();
-                                ?>
+                                ?>%
                             </td>
                         </tr>
-
                     </table>
+                    <div id="overAllStatusBar">
+                        <?php echo createStatusBarsForFullTrail(getPercentageComplete()) ?>
+                    </div>
                 </div>
                 <div class="row p-3">
                     <div id="counties" class="col-sm-6">
                         <h2>Completed Segments</h2>
                         <div class="container">
                             <?php
-                                require_once("configFiles/config.php");   
-                                require_once('Views/MySegmentView.php');
                             ?>  <table class="table table-striped"> 
                                 <thead><tr><th>Date Completed</th><th>County</th><th>Segment</th></tr></thead>
                                 <tbody>
@@ -100,5 +103,6 @@
                 </div>
         </main>
     </div>
+    <?php require_once("Views/Footer.php"); ?>
 </body>
 </html>

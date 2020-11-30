@@ -40,6 +40,7 @@
             <input type="submit" class="btn btn-dark" id="loginBtn" name="login" value="Login" />
         </form>
         </div>
+        <?php require_once("Views/Footer.php"); ?>
     </body>
 </html>
 

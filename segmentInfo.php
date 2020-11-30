@@ -24,40 +24,7 @@
             <p class="lead">Segment information and personal data collection</p>
             </div>
         </div>
-        
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="segments.php">Segment Information</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mySegments.php">My Segments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trailInfo.html">Trail Information</a>
-                    </li>
-                </ul>
-    
-                <?php if ($loggedIn) { ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="myAccount.php">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                </ul>
-                <?php } else { ?>
-                
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                </ul>
-                <?php } ?>
-            </nav>
+        <?php require_once("Views/Navbar.php"); ?>
 
         <main>
 
@@ -88,19 +55,23 @@
 
 
                     // display segment information
-                    echo "<h1>$segmentName</h1>";
-                    echo "<a href=\"addSegment.php?segmentName={$segmentName}&segmentID={$ID}\"><button class=\"btn btn-dark\">Add to Completed Segments</button></a>";
-                    echo "<ul><li>County: $county</li>";
-                    echo "<li>Distance: $distance</li>";
-                    echo "<li>Elevation Grade: $elevationGrade</li>";
-                    echo "<li>Technical Grade: $technicalGrade</li>";
-                    echo "<li>Water Availability: $waterAvailability";
+                    echo "<h1 style='text-align: center'>$segmentName</h1>";
+                    if ($loggedIn) {
+                        echo "<a href=\"addSegment.php?segmentName={$segmentName}&segmentID={$ID}\"><button class=\"btn btn-dark mb-4\">Add to Completed Segments</button></a>";
+                    }
+                    
+                    ?><table class="table">
+                        <thead><th>County</th><th>Distance</th><th>Elevation Grade</th><th>Technical Grade</th><th>Water Availability</th></thead>
+                        <tr><td><?php echo $county?></td><td><?php echo $distance?></td><td><?php echo $elevationGrade?></td><td><?php echo $technicalGrade?></td><td><?php echo $waterAvailability?></td></tr>
+                    </table>
+
+                    <?php
                     echo '<li><img src="images/SegmentImages/' . $image .'" /></li></ul>';
                     if ($row['secondaryImageName']) {
                         $secondaryImage = $row['secondaryImageName'];
                         echo '<li><img src="images/SegmentImages/' . $secondaryImage .'" /></li></ul>';
                     }
-
+                    
                     if ($row['tertiaryImageName']) {
                         $tertiaryImage = $row['tertiaryImageName'];
                         echo '<li><img src="images/SegmentImages/' . $tertiaryImage .'" /></li></ul>';

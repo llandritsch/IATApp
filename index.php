@@ -42,18 +42,18 @@
                         some of the state’s most beautiful natural areas. The Trail is entirely within Wisconsin and is one of only eleven National 
                         Scenic Trails.
                     </p>
+                    <div id="signUp">
+                        <a href="createAccount.php"><button class="btn btn-dark account" id="createAccount" type="button">Create Account</button></a>
+                        <a href="login.php"><button class="btn btn-dark account" id="signIn" type="button">Sign In</button></a>
+                    </div>
                 </div>
-
                 <div id="wiMap">
                     <img src="images/IAT-wi.png" alt="ice age trail map through wi">
                 </div>
             </div>
-
-            <div id="signUp">
-                <a href="createAccount.php"><button class="btn btn-dark account" id="createAccount" type="button">Create Account</button></a>
-                <a href="login.php"><button class="btn btn-dark account" id="signIn" type="button">Sign In</button></a>
-            </div>
         </main>
     </div>
+    <?php require_once("Views/Footer.php"); ?>
+
 </body>
 </html>

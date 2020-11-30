@@ -7,6 +7,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="segments.php">Segment Information</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.iceagetrail.org/" target="_blank">Ice age Trail Alliance</a>
+                    </li>
                 </ul>
     
                 <?php if ($loggedIn) { ?>

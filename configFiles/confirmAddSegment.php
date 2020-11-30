@@ -12,7 +12,7 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $stmt = $dbc->prepare('INSERT INTO usersegments (userID, segmentID, DateCompleted, distance, time, Pace, elevationGain, elevationLoss, comments) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt->bind_param("sssssssss", $userID, $segmentID, $date, $distance, $time, $pace, $elevationGain, $elevationLoss, $comments);
+        $stmt->bind_param("sssssdsss", $userID, $segmentID, $date, $distance, $time, $pace, $elevationGain, $elevationLoss, $comments);
         
         $segmentID = $_POST['segmentID'];
         $segment = $_POST['segment'];

@@ -7,7 +7,7 @@
         $result = $dbc->query($userQuery)
                 or die(mysqli_error($dbc));
         while ($row = mysqli_fetch_array($result)) {
-            echo "<tr scope='row'><td>".$row[3]."</td><td>".$row[11]."</td><td>".$row[12]."</td><td><a href='completedSegment.php'>See Data</a></tr>";               
+            echo "<tr scope='row'><td>".$row[3]."</td><td>".$row[11]."</td><td>".$row[12]."</td><td><a href='completedSegment.php?completedId=".$row[0]."'>See Data</a></tr>";               
         }
     }
 
@@ -68,6 +68,30 @@
 
         return $percentComplete;
     }
+
+    // Completed Segment View
+    function getCompletedSegment($segmentId) {
+        $dbc = mysqli_connect('localhost', 'lisa', 'bacon', 'iceage');
+        $segmentQuery = "SELECT * FROM usersegments WHERE completedID = $segmentId";
+        $result = $dbc->query($segmentQuery)
+                or die(mysqli_error($dbc));
+        $tableInfo = '';
+        while ($row = mysqli_fetch_array($result)) {
+            $tableInfo .= "<tr><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[7]."</td><td>".$row[8]."</td><td>".$row[9]."</td><td><a href='deleteSegment.php?segmentId=".$segmentId."'>Delete Segment</a></td></tr>";
+        }
+        return $tableInfo;
+    }
+
+    function createStatusBarsForFullTrail($percentComplete) {
+        $statusBar = 
+                '<div class="progress" style="height: 25px">
+                    <div class="progress-bar" role="progressbar" style="width: '. $percentComplete .'%;">' . $percentComplete . '%</div>
+                </div>';
+        
+        echo $statusBar;
+    }
+    
+    
 ?>
 
 

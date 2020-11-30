@@ -1,6 +1,7 @@
 <?php
     session_start();
     session_destroy();
+    $loggedIn = false;
 ?>
 
 <!DOCTYPE html>
@@ -29,5 +30,6 @@
             
         </main>
     </div>
+    <?php require_once("Views/Footer.php"); ?>
 </body>
 </html>
