@@ -30,7 +30,7 @@
 
         <main>
             <div class="mainContainer">
-                <h2>My Segments</h2>
+                <h2 style="text-align: center">My Segments</h2>
 
                 <a href="addSegmentCounty.php"><button class="btn btn-dark account" id="addSegment" type="button">Add Segment</button></a>
                 <div class="container">

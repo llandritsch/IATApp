@@ -23,7 +23,7 @@
         $pace = $_POST['pace'];
         $elevationGain = $_POST['elevationGain'];
         $elevationLoss = $_POST['elevationLoss'];
-        $comments = $_POST['comments'];
+        $comments =  htmlspecialchars($_POST['comments']);
 
         $stmt->execute();
                 print_r($dbc->error);
