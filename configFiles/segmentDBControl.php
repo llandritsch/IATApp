@@ -29,7 +29,7 @@
 
     function getPercentageComplete() {
         $uniqueSegments = getUniqueSegments();
-        $percentageComplete = round($uniqueSegments / 188, 2);
+        $percentageComplete = round($uniqueSegments / 188, 2) * 100;
         return $percentageComplete; 
     }
 

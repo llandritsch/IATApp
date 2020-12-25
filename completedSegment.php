@@ -35,7 +35,7 @@
             <div id="mainFlex">
                 <div id="about" class="container p-2">
                     <?php 
-                        require_once('Views/mySegmentView.php');
+                        require_once('Views/MySegmentView.php');
                     ?>
                         <h2><?php//put segment name here   ?></h2>
                         <table class="table table-striped">

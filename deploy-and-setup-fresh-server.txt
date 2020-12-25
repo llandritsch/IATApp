@@ -32,7 +32,7 @@ sudo systemctl restart apache2
 # Grab ownership of the /var/www/html folder
 sudo chown -R $(whoami) /var/www/html
 
-DEPLOY: To be run from you Mac/dev machine
+DEPLOY: To be run from your Mac/dev machine
 
 # Run this every time you want to deploy your app
 scp -r -i "~/Desktop/AWS/IceAgeTrailApp.pem" ~/Sites/IATApp/* ubuntu@ec2-18-217-36-223.us-east-2.compute.amazonaws.com:/var/www/html
